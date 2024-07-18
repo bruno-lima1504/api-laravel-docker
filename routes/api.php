@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('v1')->group(function () {   
+
+    Route::namespace('api\v1\categories')->group(function(){
+        Route::resource('/categories', 'CategoryController');
+    });
+
+    Route::namespace('api\v1\subcategories')->group(function(){
+        Route::resource('/subcategories', 'SubcategoryController');        
+    });
+
+});
